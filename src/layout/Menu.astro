@@ -1,0 +1,193 @@
+---
+---
+
+<header>
+    <div class="mobile-menu">
+        <div class="mobile-header">
+            <div class="burger" onclick="openNav()">&#9776;</div>
+            <div class="logo"><img src="/public/vectors/Logo - mobil.svg" alt=""></div>
+            <div class="image-icon">🖼️</div>
+        </div>
+        <div id="sideNav" class="side-nav">
+            <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+            <a href="/">Tøj</a>
+            <a href="#">Sko</a>
+            <a href="#">Tasker</a>
+            <a href="#">Acc</a>
+        </div>
+    </div>
+
+    <!-- Web Menu -->
+    <div class="web-menu">
+        <div class="web-header">
+            <input type="text" class="search-bar" placeholder="Søg...">
+            <div class="logo"><img src="/public/vectors/Logo_web.svg" alt=""></div>
+            <div class="header-buttons">
+                <button class="how-to-sell">How to sell</button>
+                <div class="icon-group">
+                    <div class="person-icon">👤</div>
+                    <div class="divider"></div>
+                    <div class="cart-icon">🛒</div>
+                </div>
+            </div>
+        </div>
+        <div class="web-nav">
+            <button>Tøj</button>
+            <button>Sko</button>
+            <button>Tasker</button>
+            <button>Acc</button>
+        </div>
+    </div>
+    <script>
+        function openNav() {
+        document.getElementById("sideNav").style.width = "250px";
+    }
+    
+    function closeNav() {
+        document.getElementById("sideNav").style.width = "0";
+    }
+    
+    </script>
+</header>
+
+<style>
+    /* Common styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.logo img{
+    justify-content: center;
+align-items: center;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    display: none;
+}
+
+.mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+.burger {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.image-icon {
+    font-size: 24px;
+}
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-nav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover {
+    color: #f1f1f1;
+}
+
+.side-nav .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Web Menu Styles */
+.web-menu {
+    display: block;
+}
+
+.web-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+.search-bar {
+    width: 340px;
+    padding: 5px;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.how-to-sell {
+    margin-right: 10px;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+}
+
+.icon-group .divider {
+    width: 1px;
+    height: 20px;
+    background-color: white;
+    margin: 0 10px;
+}
+
+.web-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #444;
+}
+
+.web-nav button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.web-nav button:hover {
+    background-color: #555;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+    
+    .web-menu {
+        display: none;
+    }
+}
+
+</style>
+
