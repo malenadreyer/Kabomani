@@ -1,16 +1,17 @@
 ---
+import Garments from "../pages/Garmentscomponent.astro";
 ---
 
 <header>
     <div class="mobile-menu">
         <div class="mobile-header">
             <div class="burger" onclick="openNav()">&#9776;</div>
-            <div class="logo"><img src="/public/vectors/Logo - mobil.svg" alt=""></div>
+            <div class="logo"><img src="/vectors/Logo - mobil.svg" alt=""></div>
             <div class="image-icon">🖼️</div>
         </div>
         <div id="sideNav" class="side-nav">
             <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-            <a href="/">Tøj</a>
+            <a href="/garment">Tøj</a>
             <a href="#">Sko</a>
             <a href="#">Tasker</a>
             <a href="#">Acc</a>
@@ -21,7 +22,7 @@
     <div class="web-menu">
         <div class="web-header">
             <input type="text" class="search-bar" placeholder="Søg...">
-            <div class="logo"><img src="/public/vectors/Logo_web.svg" alt=""></div>
+            <div class="logo"><img src="/vectors/Logo_web.svg" alt=""></div>
             <div class="header-buttons">
                 <button class="how-to-sell">How to sell</button>
                 <div class="icon-group">
@@ -32,7 +33,7 @@
             </div>
         </div>
         <div class="web-nav">
-            <button>Tøj</button>
+            <a href="/src/pages/garment.astro">Tøj</a>
             <button>Sko</button>
             <button>Tasker</button>
             <button>Acc</button>

@@ -1,0 +1,20 @@
+---
+export async function getStaticPaths () {
+    const data = await fetch ('https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*', {
+	method: "GET",
+	headers: {
+		apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
+	},
+}).then(response => response.json ());
+
+    return data.map ((skulptur)=> {
+        return {
+            params: { id: skulptur.id},
+            props: {myData:skulptur},
+        };
+        
+        });
+    }
+    const {myData} = Astro.props;
+    console.log(myData)
+---

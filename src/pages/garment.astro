@@ -1,0 +1,33 @@
+---
+const data = await fetch("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*", {
+	method: "GET",
+	headers: {
+		apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
+	},
+}
+).then (res=>res.json())
+import Garments from "./Garmentscomponent.astro"
+import Menu from "../layout/Menu.astro"
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+<Menu/>
+		<h1>Astro</h1>
+	</body>
+</html>
+
+
+		<h1>Astro</h1>
+        <article class="layout"> {data.article ((show) => {return <Garments data={show}/>})} 
+        </article>
+	</body>
+</html>
+
