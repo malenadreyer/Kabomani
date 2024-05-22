@@ -1,0 +1,25 @@
+---
+import Footer from "../layout/Footer.astro";
+import Garmentscomponent from "./Garmentscomponent.astro";
+import Menu from "../Menu.astro";
+const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*", {
+	method: "GET",
+	headers: {
+		apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
+	},
+}
+).then (res=>res.json())
+
+
+---
+
+<Menu/>
+		<h1>Tøj</h1>
+		<article class="layout"> {data.map ((show) => {return <Garmentscomponent  data={show}/>;
+		})}
+		</article>  
+
+<Footer/>
+
+
+

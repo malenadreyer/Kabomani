@@ -1,16 +1,21 @@
 ---
+<<<<<<< HEAD
 import Garment from "./garments.astro";
+=======
+import Garment from "./garment.astro";
+
+>>>>>>> d4481964b105db46bacbd22af8799c1e6ea00645
 const {data} = Astro.props;
 ---
 
+<a href={`garment/${data.id}`} class="article">
     <article>
 <div>
     <div class="overskrift">
-        <h3>{data.id}.</h3>
         <h3>{data.overskrift}</h3>
     </div>
             <div class="kunstner">
-                <h4>pris: <span class="normal-text">{data.price}</span></h4>
+                <h4>Pris: <span class="normal-text">{data.price}</span></h4>
             </div>
             <div >
                 <h4>Lokation: <span class="normal-text">{data.forretning}</span></h4>
@@ -19,3 +24,4 @@ const {data} = Astro.props;
                 <img src={data.billede} alt="billede">
             </div>
         </article>
+    </a>
