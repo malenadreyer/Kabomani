@@ -1,5 +1,5 @@
 ---
-
+import Footer from "../layout/Footer.astro";
 import Garmentscomponent from "./Garmentscomponent.astro";
 import Menu from "../Menu.astro";
 const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*", {
@@ -12,22 +12,14 @@ const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabo
 
 
 ---
-<html lang="da">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content="Astro" />
-		<title>Tøj</title>
-	</head>
-	<body>
+
 <Menu/>
 		<h1>Astro</h1>
 		<article class="layout"> {data.map ((show) => {return <Garmentscomponent  data={show}/>;
 		})}
 		</article>  
-	</body>
-</html>
+
+<Footer/>
 
 
 
