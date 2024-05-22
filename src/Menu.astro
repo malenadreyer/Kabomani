@@ -1,6 +1,16 @@
 ---
-import Garments from "../pages/Garmentscomponent.astro";
+import Garments from "./pages/Garmentscomponent.astro";
 ---
+<html lang="da">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content="Astro" />
+		<title>Tøj</title>
+	</head>
+	<body>
+
 
 <header>
     <div class="mobile-menu">
@@ -33,7 +43,7 @@ import Garments from "../pages/Garmentscomponent.astro";
             </div>
         </div>
         <div class="web-nav">
-            <a href="/src/pages/garment.astro">Tøj</a>
+            <a href="/garment">Tøj</a>
             <button>Sko</button>
             <button>Tasker</button>
             <button>Acc</button>
@@ -50,7 +60,8 @@ import Garments from "../pages/Garmentscomponent.astro";
     
     </script>
 </header>
-
+</body>
+</html>
 <style>
     /* Common styles */
 body {
