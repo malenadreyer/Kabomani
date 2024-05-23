@@ -35,7 +35,7 @@ import Garments from "./pages/Garmentscomponent.astro";
     <div class="web-menu">
         <div class="web-header">
             <input type="text" class="search-bar" placeholder="Søg...">
-            <a href="-index" class="logo"><img src="/vectors/Logo_web.svg" alt=""></a>
+            <a href="/index" class="logo"><img src="/vectors/Logo_web.svg" alt=""></a>
             <div class="header-buttons">
                 <div ><a class="how-to-sell" href="/om">How to <span style="font-style: italic">sell</span></a></div>
                 <div class="icon-group">
@@ -61,7 +61,7 @@ import Garments from "./pages/Garmentscomponent.astro";
         const closeBtn = document.querySelector(".close-btn");
 
         burgerIcon.addEventListener("click", function() {
-            sideNav.style.width = "350px";
+            sideNav.style.width = "300px";
         });
 
         closeBtn.addEventListener("click", function() {
@@ -79,7 +79,6 @@ import Garments from "./pages/Garmentscomponent.astro";
     justify-content: center;
     position: relative;
     left:40px;
-    bottom: 60px;
 }
     .header {
   background:  #FFFAF5;
@@ -125,21 +124,20 @@ align-items: center;
 }
 
 .side-nav {
-    height: 64%;
+    height: 100%;
     width: 0px;
     position: fixed;
-    top: 0;
+    top: -61px;
     left: 0;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
     background: #F3ECD9;
 }
-
 .side-nav a {
     padding: 22px 21px 10px 20px;
     text-decoration: none;
-    font-size: 25px;
+    
     color: black;
     display: block;
     transition: 0.3s;
@@ -147,11 +145,12 @@ align-items: center;
 .nava {
     border-bottom: 1px solid rgba(81, 60, 34, 1) ;
 font-family: Mattone;
+font-size: 10px;
 font-style: normal;
 line-height: normal;
-font-size: 0.5rem;
 letter-spacing: 3px;
 }
+
 .side-nav a:hover {
     color: #f1f1f1;
 }
@@ -184,11 +183,10 @@ letter-spacing: 3px;
 
 }
 .search-bar1 {
-    width: 300px;
+    width: 250px;
     padding: 5px;
     align-items: center;
     position: relative;
-    bottom: 40px;
     left: 20px;
 }
 
@@ -208,7 +206,7 @@ height: 50px;
 color: rgba(255, 255, 255, 1);
 text-align: center;
 font-family: "Mazius Display";
-font-size: 33px;
+font-size: 20px;
 font-weight: 400;
 line-height: normal;
 border-radius: 5px;
@@ -220,7 +218,7 @@ background: rgba(132, 149, 0, 1);
 color: rgba(255, 255, 255, 1);
 text-align: center;
 font-family: "Mazius Display";
-font-size: 33px;
+font-size: 20px;
 font-weight: 400;
 line-height: normal;
 text-align: center;
@@ -231,7 +229,7 @@ text-align: center;
 background: rgba(132, 149, 0, 1);
 }
 
-.how-to-sell:hover {
+.how-to-sell:hover, .how-to-sell1:hover {
     border-radius: 5px;
 background: rgba(200, 219, 75, 1);
 color: rgba(132, 149, 0, 1);
@@ -263,7 +261,6 @@ font-style: "extra italic":
     color: rgba(0, 0, 0, 1);
 /* Menu tekst 2 */
 font-family: Mattone;
-font-size: 26px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
