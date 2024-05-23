@@ -12,19 +12,22 @@ import Garments from "./pages/Garmentscomponent.astro";
 	<body>
 
 
-<header>
+<header class="header">
     <div class="mobile-menu">
         <div class="mobile-header">
-            <div class="burger" onclick="openNav()">&#9776;</div>
-            <div class="logo"><img src="/vectors/Logo - mobil.svg" alt=""></div>
-            <div class="image-icon">🖼️</div>
+            <div class="burger-icon" >&#9776;</div>
+            <a href="/index" class="logo"><img src="/vectors/Logo _mobil.svg" alt=""></a>
+            <div class="image-icon"> <img src="/public/vectors/kurv.svg" alt=""></div>
         </div>
         <div id="sideNav" class="side-nav">
-            <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-            <a href="/garment">Tøj</a>
-            <a href="#">Sko</a>
-            <a href="#">Tasker</a>
-            <a href="#">Acc</a>
+            <div class="navlogo"> <img src="/vectors/Logo _mobil.svg" alt=""><a href="javascript:void(0)" class="close-btn">&times;</a></div>
+            <input type="text" class="search-bar1" placeholder="Søg...">
+            <a class="nava" href="/garment">Tøj</a>
+            <a class="nava" href="#">Sko</a>
+            <a class="nava" href="#">Tasker</a>
+            <a class="nava" href="#">Acc</a>
+            <a class="nava" href="#">Min konto</a>
+            <div class="how-to-sell1"><a class="nava1" href="/om">How to <span style="font-style: italic">sell</span></a></div>
         </div>
     </div>
 
@@ -32,40 +35,60 @@ import Garments from "./pages/Garmentscomponent.astro";
     <div class="web-menu">
         <div class="web-header">
             <input type="text" class="search-bar" placeholder="Søg...">
-            <div class="logo"><img src="/vectors/Logo_web.svg" alt=""></div>
+            <a href="-index" class="logo"><img src="/vectors/Logo_web.svg" alt=""></a>
             <div class="header-buttons">
-                <button class="how-to-sell">How to sell</button>
+                <div ><a class="how-to-sell" href="/om">How to <span style="font-style: italic">sell</span></a></div>
                 <div class="icon-group">
-                    <div class="person-icon">👤</div>
+                    <div class="person-icon"> <img src="/public/vectors/Profil knap.svg" alt=""></div>
                     <div class="divider"></div>
-                    <div class="cart-icon">🛒</div>
+                    <div class="cart-icon"> <img src="/public/vectors/kurv.svg" alt=""></div>
                 </div>
             </div>
         </div>
         <div class="web-nav">
-            <a href="/garment">Tøj</a>
-            <button>Sko</button>
-            <button>Tasker</button>
-            <button>Acc</button>
+            <div><a href="/garment">Tøj</a></div>
+            <div><a href="/garment">Sko</a></div>
+            <div><a href="/garment">Tasker</a></div>
+            <div><a href="/garment">Accessories</a></div>
+        
         </div>
     </div>
-    <script>
-        function openNav() {
-        document.getElementById("sideNav").style.width = "250px";
-    }
-    
-    function closeNav() {
-        document.getElementById("sideNav").style.width = "0";
-    }
-    
-    </script>
 </header>
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+        const burgerIcon = document.querySelector(".burger-icon");
+        const sideNav = document.getElementById("sideNav");
+        const closeBtn = document.querySelector(".close-btn");
+
+        burgerIcon.addEventListener("click", function() {
+            sideNav.style.width = "350px";
+        });
+
+        closeBtn.addEventListener("click", function() {
+            sideNav.style.width = "0";
+        });
+    })
+
+</script>
 </body>
 </html>
 <style>
     /* Common styles */
+.navlogo{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left:40px;
+    bottom: 60px;
+}
+    .header {
+  background:  #FFFAF5;
+  padding-bottom: 20px;
+}
+a {
+    text-decoration: none;
+}
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -79,19 +102,22 @@ align-items: center;
 .mobile-menu {
     display: none;
 }
-
+.burger-icon{
+    color:rgba(81, 60, 34, 1) ;
+    cursor: pointer;
+}
 .mobile-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #333;
     color: white;
 }
 
 .burger {
     font-size: 30px;
     cursor: pointer;
+    color: rgba(81, 60, 34, 1);
 }
 
 .image-icon {
@@ -99,38 +125,46 @@ align-items: center;
 }
 
 .side-nav {
-    height: 100%;
-    width: 0;
+    height: 64%;
+    width: 0px;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    background: #F3ECD9;
 }
 
 .side-nav a {
-    padding: 8px 8px 8px 32px;
+    padding: 22px 21px 10px 20px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: black;
     display: block;
     transition: 0.3s;
 }
-
+.nava {
+    border-bottom: 1px solid rgba(81, 60, 34, 1) ;
+font-family: Mattone;
+font-style: normal;
+line-height: normal;
+font-size: 0.5rem;
+letter-spacing: 3px;
+}
 .side-nav a:hover {
     color: #f1f1f1;
 }
 
 .side-nav .close-btn {
-    position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
 }
-
+.close-btn{
+    color: rgba(81, 60, 34, 1);
+}
 /* Web Menu Styles */
 .web-menu {
     display: block;
@@ -141,13 +175,21 @@ align-items: center;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #333;
     color: white;
 }
-
-.search-bar {
-    width: 340px;
+.search-bar{
+    width: 300px;
     padding: 5px;
+    align-items: center;
+
+}
+.search-bar1 {
+    width: 300px;
+    padding: 5px;
+    align-items: center;
+    position: relative;
+    bottom: 40px;
+    left: 20px;
 }
 
 .header-buttons {
@@ -156,38 +198,91 @@ align-items: center;
 }
 
 .how-to-sell {
-    margin-right: 10px;
+    margin-right: 25px;
+    width: 221px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+height: 50px;
+color: rgba(255, 255, 255, 1);
+text-align: center;
+font-family: "Mazius Display";
+font-size: 33px;
+font-weight: 400;
+line-height: normal;
+border-radius: 5px;
+background: rgba(132, 149, 0, 1);
+
+}
+.how-to-sell1 {
+    align-items: center;
+color: rgba(255, 255, 255, 1);
+text-align: center;
+font-family: "Mazius Display";
+font-size: 33px;
+font-weight: 400;
+line-height: normal;
+text-align: center;
+    margin-top: 34px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 5px;
+background: rgba(132, 149, 0, 1);
 }
 
+.how-to-sell:hover {
+    border-radius: 5px;
+background: rgba(200, 219, 75, 1);
+color: rgba(132, 149, 0, 1);
+}
+.font2 {
+    font-family: "Mazius Display";
+font-size: 33px;
+font-style: "extra italic":
+}
 .icon-group {
     display: flex;
+    padding: 10px;
     align-items: center;
+    gap: 25;
 }
 
 .icon-group .divider {
-    width: 1px;
-    height: 20px;
-    background-color: white;
+    width: 2px;
+    height: 30px;
+    background-color: rgba(81, 60, 34, 1);
     margin: 0 10px;
 }
 
-.web-nav {
-    display: flex;
+.web-nav a {
     justify-content: space-around;
     padding: 10px;
-    background-color: #444;
+    background-color: FFFAF5;
+    align-items: flex-start;
+    color: rgba(0, 0, 0, 1);
+/* Menu tekst 2 */
+font-family: Mattone;
+font-size: 26px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 3.9px;
 }
 
-.web-nav button {
-    background-color: #333;
-    color: white;
+.web-nav  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    padding: 10px;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    
 }
 
-.web-nav button:hover {
-    background-color: #555;
+.web-nav a:hover {
+    border-bottom: 3px solid rgba(132, 149, 0, 1) ;
 }
 
 /* Media Queries */
