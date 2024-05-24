@@ -23,22 +23,104 @@ export async function getStaticPaths () {
 ---
 
 <Menu/>
-<div class="billede">
-    <img src={myData.billede} alt=""></div>
+
+<div class="sti">
+<p>Hjem</p>
+<p>></p>
+<p>Tøj</p>
+<p>></p>
+<p>{myData.overskrift}</p>
+</div>
+
+<div class="img_container">
+    <img src={myData.billede} alt="">
+</div>
 
     <div class="">
-        <div class="">
+        <div class="produktnavn">
             <h2>{myData.overskrift}</h2>
         </div>
         <div class="">
-            <h3>Pris: <span class="">{myData.price}</span> DKK</h3>
-            <h3>Forretning: <span class="">{myData.forretning}</span></h3>
-            <h3>Størrelse:<span>{myData.size}</span></h3>
-
-        </div>
-        <div class="beskrvelse">
-            <p>{myData.beskrivelse}</p>
+            <h3 class="pris">Pris: <span class="">{myData.price}</span> DKK</h3>
+            <p class="beskrivelse">{myData.beskrivelse}</p>
+              <h3 class="størrelse">Størrelse:<span>{myData.size}</span></h3>
+            <h3 class="forretning">Forretning: <span class="">{myData.forretning}</span></h3>
         </div>
     </div>
 
+<button class="købnu">Køb nu</button>
+<button class="hjerte"></button>
+
 <Footer/>
+
+<style>
+
+    /* STYLING */
+body{
+    background-color: #FFFAF5;
+}
+
+h2{
+    color: #262521;
+}
+
+h3, p{
+    color: #262521;
+    opacity: 70%;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    background-color: #849500;
+}
+
+.købnu {
+    width: 300px;
+    height: 40px;
+    color: #FFFAF5;
+}
+
+.købnu:hover {
+    color: #849500;
+    background-color: #C8D94A;
+    
+}
+
+.hjerte{
+    width: 42px;
+    height: 40px;
+    background-image: url('/png/hjerte.png');
+    background-size: contain; /* Adjust the image size to cover the button */
+    background-repeat: no-repeat;
+}
+
+.hjerte:hover{
+    background-color: #C8D94A;
+}
+
+/* LAYOUT */
+
+.sti{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.img_container {
+    width: 550px;
+    height: 600px; 
+    overflow: hidden; /* Hide any overflow */
+    position: relative; /* Positioning context for the img */
+}
+
+.img_container img {
+    width: 100%;  /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: cover; /* Crop the image to fit the container */
+    position: absolute; /* Ensures the img respects the overflow:hidden */
+
+
+}
+</style>
