@@ -1,6 +1,8 @@
 ---
 import Menu from '../../Menu.astro';
 import Footer from "../../layout/Footer.astro"
+import Button from "../componenter/Button.astro";
+
 export async function getStaticPaths () {
     const data = await fetch ('https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*', {
 	method: "GET",
@@ -48,18 +50,16 @@ export async function getStaticPaths () {
         </div>
     </div>
 
-<button class="købnu">Køb nu</button>
-<button class="hjerte"></button>
+
+<Button/>
+
+<!-- <button class="hjerte"></button> -->
 
 <Footer/>
 
 <style>
 
     /* STYLING */
-body{
-    background-color: #FFFAF5;
-}
-
 h2{
     color: #262521;
 }
@@ -69,23 +69,6 @@ h3, p{
     opacity: 70%;
 }
 
-button {
-    border: none;
-    border-radius: 5px;
-    background-color: #849500;
-}
-
-.købnu {
-    width: 300px;
-    height: 40px;
-    color: #FFFAF5;
-}
-
-.købnu:hover {
-    color: #849500;
-    background-color: #C8D94A;
-    
-}
 
 .hjerte{
     width: 42px;
@@ -107,7 +90,6 @@ button {
     gap: 20px;
 }
 
-
 .img_container {
     width: 550px;
     height: 600px; 
@@ -120,7 +102,5 @@ button {
     height: 100%; /* Make the image fill the container */
     object-fit: cover; /* Crop the image to fit the container */
     position: absolute; /* Ensures the img respects the overflow:hidden */
-
-
 }
 </style>
