@@ -1,4 +1,10 @@
-<button class="købnu">Her er en <span style="font-style: italic">knap</span></button>
+---
+const tekst1 = Astro.props.tekst1
+const tekst2 = Astro.props.tekst2
+---
+
+
+<button>{tekst1}<span style="font-style: italic">{tekst2}</span></button>
 
 <style>
 button {
@@ -18,9 +24,10 @@ button:hover {
     background-color: #C8D94A;
 }
 
+/* mobil */
 @media screen and (max-width: 768px) {
 button {
-    width: 200px;
+    width: 230px;
     height: 40px;
     color: #FFFAF5;
     padding: -80px;
