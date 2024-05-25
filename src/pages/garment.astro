@@ -10,29 +10,66 @@ const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabo
 }
 ).then (res=>res.json())
 
-
 ---
 
 <Menu/>
 <div class="overskrift">
 	<h1>Tøj</h1>
 </div>
-
-<div class="filtrering">
-	<div>
-		<div>filtrering</div>
+<div class="knapper">
+	<div class="dropdown-container">
+		<div class="dropdown">
+			<button class="dropdown-button">Sortér
+			<img src="/public/vectors/filtrering.svg" alt="Icon" class="dropdown-icon">
+		
+			</button>
+		<div class="dropdown-content">
+			<a href="#option1">New to Old</a>
+			<a href="#option2">Low to High</a>
+			<a href="#option3">High to Old</a>
+		</div>
 	</div>
-
-		<div>
-		<article class="layout"> {data.map ((show) => {return <Garmentscomponent  data={show}/>;
-		})}
-		</article>  
+	</div>
+	<div class="filtrering-container">
+		<div class="filtrering-button">
+			<div>Filtre</div>
+		</div>
+	</div>
+</div>
+</div>
+<div>
+	<div>
+		<div class="filter-til-com">
+			<h4>filtrering</h4>
+		</div>
+	</div>
+	<div>
+	<article class="layout"> {data.map ((show) => {return <Garmentscomponent  data={show}/>;
+	})}
+	</article>  
 	</div>
 </div>
 <Footer/>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+    const dropdownButton = document.querySelector(".dropdown-button");
+    const dropdownContent = document.querySelector(".dropdown-content");
+
+    dropdownButton.addEventListener("click", function() {
+        dropdownContent.classList.toggle("show");
+    });
+
+    window.addEventListener("click", function(e) {
+        if (!dropdownButton.contains(e.target)) {
+            dropdownContent.classList.remove("show");
+        }
+    });
+});
+</script>
 
 <style>
-	.filtrering {
+	@media screen and (min-width: 768px) {
+		.filtrering {
 		display: grid;
 		grid-template-columns: 1fr 4fr;
 		padding-top: 100px;
@@ -44,6 +81,160 @@ const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabo
 .layout{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-container {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    height: 90%;
+    display: grid;
+    align-items: center;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: #849500;
+    width: 157px;
+    padding: 10px 20px;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.dropdown-button .dropdown-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(200, 217, 74, 1);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+	border-bottom: 1px solid black;
+}
+
+.dropdown-content a:hover {
+    color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+	}
+@media screen and (max-width: 768px) {   
+
+.knapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 100%;
+	box-sizing: border-box;
+}
+.filtrering-container {
+	background: #849500;
+	border-radius: 5px;
+    border-left: 1px solid #000;
+}	
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.dropdown-container {
+    align-items: center;
+    gap: 10px;
+	align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    border-left: 1px solid #000;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+	background: #849500;
+}
+
+.dropdown-button, .filtrering-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+	background: #849500;
+    padding: 10px 65px;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+
+
+.dropdown-button .dropdown-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    right: 0;
+}
+
+.filtrering-button {
+    align-items: center;
+    gap: 10px;
+	width: 157px;
+    background: #849500;
+    padding: 10px 20px;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+
+}
+.filter-til-com {
+	display: none;
+}
+	.button-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dropdown-button, .filtrering-button {
+        margin-bottom: 10px;
+    }
+
+    .dropdown-button:last-child, .filtrering-button:last-child {
+        margin-bottom: 0;
+    }
 }
 
 </style>
