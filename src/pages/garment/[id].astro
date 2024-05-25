@@ -58,7 +58,8 @@ export async function getStaticPaths () {
         </div>
         <div class="knapper">
         <Button tekst1="Køb" tekst2=" nu"/>
-        <button class="hjerte"></button>
+        <button class="hjerte" id="hjerteButton"></button>
+
         </div>
     </div>
 </div>
@@ -72,6 +73,20 @@ export async function getStaticPaths () {
 </div>
 
 <Footer/>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const heartButton = document.getElementById('hjerteButton');
+
+    heartButton.addEventListener('click', () => {
+      if (heartButton.style.backgroundImage.includes('hjerte1.svg')) {
+        heartButton.style.backgroundImage = "url('/svg/hjerte2.svg')";
+      } else {
+        heartButton.style.backgroundImage = "url('/svg/hjerte1.svg')";
+      }
+    });
+  });
+</script>
 
 
 <style>
@@ -104,12 +119,14 @@ h3, p{
     border: none;
     border-radius: 5px;
     background-color: #849500;
+    transition: background-color 0.3s ease; 
     width: 50px;
     height: 40px;
-    background-image: url('/png/hjerte.png');
-    background-size: contain; /* Adjust the image size to cover the button */
+    background-image: url('/svg/hjerte1.svg');
+    background-size: 60%;
+    background-position: center;
     background-repeat: no-repeat;
-    padding: -500px;
+    padding: 5px;
 }
 
 .hjerte:hover{
@@ -146,7 +163,7 @@ h3, p{
 display: flex;
 justify-content: center;
 align-items: center;
-gap: 80px;
+gap: 100px;
 margin-left: -80px;
 }
 
@@ -197,7 +214,8 @@ margin-bottom: 70px;
     border-top: 1px solid black;
     opacity: 30%;
     width: 92%;
-    margin: 100px 0;
+    margin-top: 170px;
+    margin-bottom: 85px;
 }
 
 }
