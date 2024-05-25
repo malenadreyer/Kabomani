@@ -14,12 +14,38 @@ const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabo
 ---
 
 <Menu/>
-		<h1>Tøj</h1>
+<div class="overskrift">
+	<h1>Tøj</h1>
+</div>
+
+<div class="filtrering">
+	<div>
+		<div>filtrering</div>
+	</div>
+
+		<div>
 		<article class="layout"> {data.map ((show) => {return <Garmentscomponent  data={show}/>;
 		})}
 		</article>  
-
+	</div>
+</div>
 <Footer/>
 
+<style>
+	.filtrering {
+		display: grid;
+		grid-template-columns: 1fr 4fr;
+		padding-top: 100px;
+	}
+
+	.overskrift {
+		text-align: center;
+	}
+.layout{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+</style>
 
 
