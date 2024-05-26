@@ -1,0 +1,9 @@
+h1,
+h2,
+h3 {
+  font-family: "Mazius display", sans-serif; /* Make sure to enclose font names with spaces in quotes */
+}
+
+body {
+  background-color: #fffaf5;
+}

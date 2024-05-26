@@ -1,0 +1,308 @@
+---
+import Menu from '../../Menu.astro';
+import Footer from "../../layout/Footer.astro"
+import Button from "../componenter/Button.astro";
+
+export async function getStaticPaths () {
+    const data = await fetch ('https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*', {
+	method: "GET",
+	headers: {
+		apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
+	},
+}).then(response => response.json ());
+
+    return data.map ((shop)=> {
+        return {
+            params: { id: shop.id},
+            props: {myData:shop},
+        };
+        
+        });
+    }
+    const {myData} = Astro.props;
+    console.log(myData)
+    
+---
+
+<Menu/>
+
+<div class="container">
+    <div class="sti">
+        <p>Hjem</p>
+        <p>></p>
+        <p>Tøj</p>
+        <p>></p>
+        <p>{myData.overskrift}</p>
+    </div>
+
+    <div class="produktnavn2">
+            <h2>{myData.overskrift}</h2>
+        </div>
+
+    <div class="desktop_layout">
+    <div class="img_container">
+        <img src={myData.billede} alt="">
+    </div>
+
+    <div class="info">
+        <div class="tekst">
+        <div class="produktnavn">
+            <h2>{myData.overskrift}</h2>
+        </div>
+        <div>
+            <h3 class="pris">Pris: <span>{myData.price}</span> DKK</h3>
+            <p class="beskrivelse">Beskrivelse: {myData.beskrivelse}</p>
+            <h3 class="størrelse">Størrelse: <span>{myData.size}</span></h3>
+            <h3 class="forretning">Forretning: <span>{myData.forretning}</span></h3>
+        </div>
+        </div>
+        <div class="knapper">
+        <Button tekst1="Køb" tekst2=" nu"/>
+        <button class="hjerte" id="hjerteButton"></button>
+
+        </div>
+    </div>
+</div>
+
+<div class="line-container">
+    <hr class="line">
+</div>
+
+<h2>Lignende varer</h2>
+
+</div>
+
+<Footer/>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const heartButton = document.getElementById('hjerteButton');
+
+    heartButton.addEventListener('click', () => {
+      if (heartButton.style.backgroundImage.includes('hjerte1.svg')) {
+        heartButton.style.backgroundImage = "url('/svg/hjerte2.svg')";
+      } else {
+        heartButton.style.backgroundImage = "url('/svg/hjerte1.svg')";
+      }
+    });
+  });
+</script>
+
+
+<style>
+    /* STYLING */
+h2{
+    color: #262521;
+    font-weight: lighter;
+}
+
+h3, p{
+    color: #262521;
+    opacity: 70%;
+    font-weight: lighter;
+}
+
+.sti p{
+    font-family: Mazius Display;
+    opacity: 100%;
+    font-size: 18px;
+}
+
+.pris{
+       font-family: Mazius Display;
+    opacity: 100%;
+}
+
+
+.hjerte{
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #849500;
+    transition: background-color 0.3s ease; 
+    width: 50px;
+    height: 40px;
+    background-image: url('/svg/hjerte1.svg');
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 5px;
+}
+
+.hjerte:hover{
+    background-color: #C8D94A;
+}
+
+/* ------------- DESKTOP VIEW ------------ */
+@media screen and (min-width: 768px) {
+
+.sti{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+h2{
+      display: flex;
+    justify-content: center;
+    font-size: 38px;
+}
+
+.pris{
+font-size: 30px; 
+margin-top: -250px;
+margin-bottom: 50px;
+}
+
+h3, p{
+    font-size: 24px;
+}
+
+.desktop_layout{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 100px;
+margin-left: -80px;
+}
+
+
+.img_container {
+    width: 450px;
+    height: 500px; 
+    overflow: hidden; /* Hide any overflow */
+}
+
+.img_container img {
+    width: 100%;  /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: cover; /* Crop the image to fit the container */
+}
+
+.knapper{
+display: flex;
+gap: 30px;
+justify-content: center;
+margin-top: 150px;
+margin-bottom: -200px;
+}
+
+.produktnavn{
+    display: none;
+}
+
+.produktnavn2{
+margin-bottom: 70px;
+}
+
+ .tekst {
+        display: flex; /* Add display flex */
+        flex-direction: column; /* Stack children vertically */
+        align-items: center; /* Center content horizontally */
+        gap: 520px; /* Add gap between children */
+        margin-left: -75px; /* Adjust as needed */
+    }
+
+.line-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.line {
+    border-top: 1px solid black;
+    opacity: 30%;
+    width: 92%;
+    margin-top: 170px;
+    margin-bottom: 85px;
+}
+
+}
+/* ------------- MOBILE VIEW ------------ */
+@media screen and (max-width: 768px) {
+
+/* styling */
+
+.sti p{
+    font-size: 14px;
+}
+
+h2{
+font-size: 30px;
+}
+
+h3, p{
+font-size: 18px;
+}
+
+.img_container {
+    display: flex; 
+    justify-content: center; /* Horizontal centering */
+    grid-row: 2;
+}
+
+.img_container img {
+width: 350px;
+height: 400px;
+overflow: hidden;
+}
+
+.pris{
+font-size: 20px; 
+}
+
+/* layout */
+.sti{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    grid-row: 1;
+}
+
+.produktnavn2{
+    display: none;
+}
+
+.container {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    row-gap: 20px;
+}
+
+ .info {
+        display: flex; /* Add display flex */
+        justify-content: center; /* Center children horizontally */
+        align-items: center; /* Center children vertically */
+        flex-direction: column; /* Stack children vertically */
+    }
+
+.tekst{
+    justify-content: center;
+    margin-left: -75px;
+}
+
+.knapper{
+display: flex;
+gap: 30px;
+justify-content: center;
+margin-top: 60px;
+}
+
+.line-container {
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    border-top: 1px solid black;
+    opacity: 30%;
+    width: 100%;
+    margin: 100px 0;
+}
+
+}
+</style>
