@@ -15,15 +15,49 @@ import Footer from "../layout/Footer.astro"
     <div class="cont_udforsk">
         <h2>Ny hos Kabomani?</h2>
         <p>Udforsk cirkulær shopping</p>
+        <div>
         <a href="">Læs mere her</a>
+        </div>
+    </div>
+
+<div class="favorit-cont">
+   <h2>Medarbejdernes favoritter</h2> 
+   </div>
+
+<div class="carousel-box">
+    <div class="carousel-container">
+        <div class="carousel">
+                <img src="/image1.webp" class="carousel-image" alt="Image 1">
+                <img src="/image2.webp" class="carousel-image" alt="Image 2">
+                <img src="/image3.webp" class="carousel-image" alt="Image 3">
+                <img src="/image4.webp" class="carousel-image" alt="Image 4">
+                <img src="/image5.webp" class="carousel-image" alt="Image 5">
+                <img src="/image6.webp" class="carousel-image" alt="Image 6">
+                <img src="/image7.webp" class="carousel-image" alt="Image 7">
+                <img src="/image8.webp" class="carousel-image" alt="Image 8">
+                <img src="/image1.webp" class="carousel-image" alt="Image 1">
+                <img src="/image2.webp" class="carousel-image" alt="Image 2">
+                <img src="/image3.webp" class="carousel-image" alt="Image 3">
+                <img src="/image4.webp" class="carousel-image" alt="Image 4">
+                <img src="/image5.webp" class="carousel-image" alt="Image 5">
+                <img src="/image6.webp" class="carousel-image" alt="Image 6">
+                <img src="/image7.webp" class="carousel-image" alt="Image 7">
+                <img src="/image8.webp" class="carousel-image" alt="Image 8">
+                <img src="/image1.webp" class="carousel-image" alt="Image 1">
+                <img src="/image2.webp" class="carousel-image" alt="Image 2">
+                <img src="/image3.webp" class="carousel-image" alt="Image 3">
+                <img src="/image4.webp" class="carousel-image" alt="Image 4">
+                <img src="/image5.webp" class="carousel-image" alt="Image 5">
+                <img src="/image6.webp" class="carousel-image" alt="Image 6">
+                <img src="/image7.webp" class="carousel-image" alt="Image 7">
+                <img src="/image8.webp" class="carousel-image" alt="Image 8">
+        </div>
+    </div>
     </div>
 
 
-   <h2>Medarbejdernes favoritter</h2> 
-
-
       <div class="container">
-        <button class="green-button">Click Me</button>
+        <button class="green-button">Shop nu</button>
     </div>
 </main>
 
@@ -40,6 +74,16 @@ import Footer from "../layout/Footer.astro"
    margin: 10%;
 
 
+}
+
+.favorit-cont {
+  display: flex;
+            justify-content: center;
+            align-items: center;
+}
+
+.favorit-cont h2 {
+    color: #849500;
 }
     .green-button {
     background-color: #849500;
@@ -61,6 +105,59 @@ main {
 
 .cont_udforsk {
     background-color: #F3ECD9 ;
+    color: #262521;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+
 }
 
-</style>
+.cont_udforsk a::after {
+            content: '→'; /* Unicode character for right arrow */
+            margin-left: 8px;
+            font-size: 16px;
+        }
+
+.carousel-box {
+      display: flex;
+            justify-content: center;
+            align-items: center;
+}
+  .carousel-container {
+            width: 96%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel {
+            display: flex;
+            width: calc(100% * 12 / 4); /* Adjust the width based on the number of items */
+            animation: scroll 15s linear infinite;
+        }
+
+        .carousel-item {
+            min-width: calc(100% / 12);
+            box-sizing: border-box;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            display: block;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-66.67%);
+            }
+        }
+.container {
+     display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10%
+}
+
+
