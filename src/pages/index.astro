@@ -2,8 +2,65 @@
 import Menu from "../Menu.astro"
 import Footer from "../layout/Footer.astro"
 ---
+<header>
+    <Menu/>
+</header>
 
-<Menu/>
+<main>
+
+    <video id="background-video" autoplay muted loop playsinline >
+        <source src="/video_forside.mp4" type="video/mp4">
+    </video>
+
+    <div class="cont_udforsk">
+        <h2>Ny hos Kabomani?</h2>
+        <p>Udforsk cirkulær shopping</p>
+        <a href="">Læs mere her</a>
+    </div>
 
 
-<Footer/>
+   <h2>Medarbejdernes favoritter</h2> 
+
+
+      <div class="container">
+        <button class="green-button">Click Me</button>
+    </div>
+</main>
+
+<footer>
+    <Footer/>
+</footer>
+
+<style>
+    #background-video {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+   border-radius: 50px;
+   margin: 10%;
+
+
+}
+    .green-button {
+    background-color: #849500;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.green-button:hover {
+    background-color: #6e7a00;
+}
+
+main {
+    background-color: #FFFAF5;
+}
+
+.cont_udforsk {
+    background-color: #F3ECD9 ;
+}
+
+</style>
