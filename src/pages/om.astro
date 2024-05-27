@@ -7,7 +7,7 @@ import Mainlayout from "../layout/Mainlayout.astro";
         <div class="overskrift"> 
             <h1>Kabomanis <span style="font-style: italic;">koncept</span></h1>
         </div>
-        <div><p>Hos Kabomani har vi udviklet et cirkulært koncept, der giver dig  mulighed for at fornye din garderobe helt uden at bruge penge. Som sælger slipper du for  besværet med at forhandle priser og håndtere uforudsigelige aftaler. I  stedet modtager du penge direkte ind på din Kabomani-konto, som du kan  bruge til at købe nyt tøj fra vores sortiment.
+        <div><p>Hos Kabomani har vi udviklet et cirkulært koncept, der giver dig  mulighed for at fornye din garderobe helt uden at bruge penge. Som sælger slipper du for  besværet med at forhandle priser og håndtere uforudsigelige aftaler. I  stedet modtager du penge direkte ind på din Kabomani-konto, som du kan  bruge til at købe nyt tøj fra vores sortiment. <br><br>
 
             Kabomani’s cirkulære koncept gør det muligt at shoppe bæredygtigt og  økonomisk, samtidig med at vi styrker fællesskabet omkring genbrug og  mode. Forny din garderobe, spar penge, og vær en del af en grønnere  fremtid hos Kabomani!</p></div>     
     </div>
@@ -129,7 +129,7 @@ import Mainlayout from "../layout/Mainlayout.astro";
  </div>
 
 <div class="kundeservice_container">
-    <div>
+    <div class="overskrift5">
          <h1>Kontakt <span style="font-style: italic">kundeservice</span>
         </h1>
     </div>
@@ -137,21 +137,27 @@ import Mainlayout from "../layout/Mainlayout.astro";
         <h5>Tlf: 30687334</h5>
         <h5>Email: support@tapirus.dk</h5>
         <h5>CVR: 40487093</h5> 
+    </div>
 </div>
 
 
 </Mainlayout>
 
 <style>
-    @media (min-width: 790px) {
+ @media (min-width: 790px) {
         .over {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left:50px;
+    padding-top: 50px;
 
 }
 .container_2_2{
     text-align: end;
+}
+.container_2_2 p {
+    font-family: "Mazius Display";
+        line-height: 50px;
 }
 .container_2_2 h1 {
 color:rgba(132, 149, 0, 1) ;
@@ -188,10 +194,14 @@ color:rgba(132, 149, 0, 1) ;
         color:rgba(132, 149, 0, 1);
         font-weight:400;
     }
-    .tekst_container_1{
+        .tekst_container_1{
         display:grid;
         
         justify-content:center;
+    }
+    .tekst_container_1 p {
+        font-family: "Mazius Display";
+        line-height: 50px;
     }
     .billede1{
         display: grid;
@@ -234,12 +244,31 @@ color:rgba(132, 149, 0, 1);
      text-align: center;
      color: rgba(132, 149, 0, 1) ;
     }
+    .container_2_2 p {
+        font-family: ;
     }
+.kundeservice_container{
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+
+}
+.overskrift5 h1 {
+    color: rgba(81, 60, 34, 1);
+}
+.tekst_container_3 p {
+    font-family: "Mazius Display";
+        line-height: 50px;
+}
+ }
     @media (max-width: 790px) {
         .tekst_container_1{
         display:grid;
         align-items: center;
         margin-left:50px;
+        margin-right: 50px
     } 
     .container_2_1{
     background-color: rgba(243, 236, 217, 1);
@@ -249,10 +278,19 @@ color:rgba(132, 149, 0, 1);
     display: grid;
     justify-items: center;
 }
+
+.tekst_container_1 p {
+        font-family: "Mazius Display";
+        line-height: 50px;
+    }
     .container_2_2{
     margin-right: 40px;
     margin-left: 40px;
     order: 1;
+}
+.container_2_2 p {
+    font-family: "Mazius Display";
+        line-height: 50px;
 }
 .container_2_2 h1 {
 color:rgba(132, 149, 0, 1) ;
@@ -271,6 +309,11 @@ color:rgba(132, 149, 0, 1) ;
     padding-bottom: 50px;
     margin-top: 100px;
 } 
+.tekst_container_3 p {
+    font-family: "Mazius Display";
+        line-height: 50px;
+}
+
     .pil_1, .pil_1 h1{
     text-align: center;
     color:rgba(132, 149, 0, 1);
@@ -317,9 +360,23 @@ color:rgba(132, 149, 0, 1)
         display: grid;
         grid-template-rows: 1fr 1fr;
     }
+    .over {
+        padding-top: 50px;
+    }
     .amager h3 {
      text-align: center;
      color: rgba(132, 149, 0, 1) ;
     }
+    .kundeservice_container{
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+
+}
+.overskrift5 h1 {
+    color: rgba(81, 60, 34, 1);
+}
     }
 </style>
