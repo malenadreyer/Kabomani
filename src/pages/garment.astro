@@ -1,9 +1,8 @@
 ---
-import Footer from "../layout/Footer.astro";
 import Filtering from "./componenter/Filtering.astro";
 import Garmentscomponent from "./Garmentscomponent.astro";
 import FilteringWeb from "./componenter/FilteringWeb.astro"
-import Menu from "../Menu.astro";
+import Mainlayout from "../layout/Mainlayout.astro";
 const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*", {
 	method: "GET",
 	headers: {
@@ -14,12 +13,12 @@ const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabo
 
 ---
 
-<Menu/>
+<Mainlayout>
 <div class="container">
     <div class="sti">
-        <a href="/"><p>Hjem</p></a>
-        <p>></p>
-        <p>Tøj</p>
+        <a href="/"><h5>Hjem</h5></a>
+        <h5>></h5>
+        <h5>Tøj</h5>
     </div>
 <div class="overskrift">
 	<h1>Tøj</h1>
@@ -57,7 +56,7 @@ const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabo
 	</article>  
 	</div>
 </div>
-<Footer/>
+
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
     const dropdownButton = document.querySelector(".dropdown-button");
@@ -94,7 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
-	
+	h5 {
+    font-weight: lighter;
+}
 	.overskrift {
 		text-align: center;
 	}
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		margin-left: 50px;
 		margin-right: 20px;
 	}
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 815px) {
 		
 .sti, .sti a{
     display: flex;
@@ -123,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 .layout{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	gap:10px;
 }
 .dropdown {
     position: relative;
@@ -185,11 +187,12 @@ document.addEventListener('DOMContentLoaded', function() {
     display: block;
 }
 	}
-@media screen and (max-width: 768px) {   
+@media screen and (max-width: 815px) {   
 .layout {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	margin-bottom: 100px;
+	gap:10px;
 	justify-items: center;
 }
 .knapper {

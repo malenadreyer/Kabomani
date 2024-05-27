@@ -1,6 +1,5 @@
 ---
-import Menu from '../../Menu.astro';
-import Footer from "../../layout/Footer.astro"
+import Mainlayout from "../../layout/Mainlayout.astro"
 import Button from "../componenter/Button.astro";
 
 export async function getStaticPaths () {
@@ -24,15 +23,15 @@ export async function getStaticPaths () {
     
 ---
 
-<Menu/>
+<Mainlayout>
 
 <div class="container">
     <div class="sti">
-        <p>Hjem</p>
-        <p>></p>
-        <p>Tøj</p>
-        <p>></p>
-        <p>{myData.overskrift}</p>
+        <h5>Hjem</h5>
+        <h5>></h5>
+        <h5>Tøj</h5>
+        <h5>></h5>
+        <h5>{myData.overskrift}</h5>
     </div>
 
     <div class="produktnavn2">
@@ -50,15 +49,15 @@ export async function getStaticPaths () {
             <h2>{myData.overskrift}</h2>
         </div>
         <div>
-            <h3 class="pris">Pris: <span>{myData.price}</span> DKK</h3>
-            <p class="beskrivelse">Beskrivelse: {myData.beskrivelse}</p>
+            <h4 class="pris">Pris: <span>{myData.price}</span> DKK</h4>
+            <h3 class="beskrivelse">Beskrivelse: {myData.beskrivelse}</p>
             <h3 class="størrelse">Størrelse: <span>{myData.size}</span></h3>
             <h3 class="forretning">Forretning: <span>{myData.forretning}</span></h3>
         </div>
         </div>
         <div class="knapper">
         <Button tekst1="Køb" tekst2=" nu"/>
-        <button class="hjerte" id="hjerteButton"></button>
+        <button id="hjerteButton"></button>
 
         </div>
     </div>
@@ -91,7 +90,7 @@ export async function getStaticPaths () {
     <button class="carousel-button next">❯</button>
 </div>
 
-<Footer/>
+</Mainlayout>
 
 <!-- HJERTE KNAP -->
 <script>
@@ -99,6 +98,7 @@ export async function getStaticPaths () {
     const heartButton = document.getElementById('hjerteButton');
 
     heartButton.addEventListener('click', () => {
+        console.log("tihi")
       if (heartButton.style.backgroundImage.includes('hjerte1.svg')) {
         heartButton.style.backgroundImage = "url('/svg/hjerte2.svg')";
       } else {
@@ -106,10 +106,9 @@ export async function getStaticPaths () {
       }
     });
   });
-</script>
 
 <!-- CARRUSEL -->
-<script>
+
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.carousel');
     const slides = Array.from(track.children);
@@ -117,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.querySelector('.prev');
 
     const slideWidth = slides[0].getBoundingClientRect().width + 50; // Adjust for the gap
+
 
     // Arrange the slides next to one another
     const setSlidePosition = (slide, index) => {
@@ -155,24 +155,11 @@ h2 {
     font-weight: lighter;
 }
 
-h3, p {
-    color: #262521;
-    opacity: 70%;
+h5, h3, p {
     font-weight: lighter;
 }
 
-.sti p {
-    font-family: Mazius Display;
-    opacity: 100%;
-    font-size: 18px;
-}
-
-.pris {
-    font-family: Mazius Display;
-    opacity: 100%;
-}
-
-.hjerte {
+#hjerteButton {
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -187,7 +174,7 @@ h3, p {
     padding: 5px;
 }
 
-.hjerte:hover {
+#hjerteButton:hover {
     background-color: #C8D94A;
 }
 
@@ -387,11 +374,10 @@ h3, p {
     }
 
     .info {
-        display: flex; /* Add display flex */
+        display: grid; /* Add display flex */
         justify-content: center; /* Center children horizontally */
         align-items: center; /* Center children vertically */
         flex-direction: column; /* Stack children vertically */
-        max-width: 400px;
     }
 
     .tekst {
