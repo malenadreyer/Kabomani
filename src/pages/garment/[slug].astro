@@ -63,17 +63,37 @@ export async function getStaticPaths () {
         </div>
     </div>
 </div>
-
+</div>
 <div class="line-container">
     <hr class="line">
 </div>
 
-<h2>Lignende varer</h2>
+<h2 class="anbefalet">Anbefalet<span style="font-style: italic; margin-left: 8px;"> til dig</span></h2>
 
+<div class="carousel_outer_container">
+    <button class="carousel-button prev">❮</button>
+    <div class="carousel_wrapper">
+        <div class="carousel">
+            <div><img src="https://tapirus.dk/images/thumbs/0760003.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741004.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0735988.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0745164.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0760352.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741066.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0759958.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741015.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0745817.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741008.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0760003.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0760003.jpeg" alt=""></div>
+        </div>
+    </div>
+    <button class="carousel-button next">❯</button>
 </div>
 
 <Footer/>
 
+<!-- HJERTE KNAP -->
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
     const heartButton = document.getElementById('hjerteButton');
@@ -88,38 +108,76 @@ export async function getStaticPaths () {
   });
 </script>
 
+<!-- CARRUSEL -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.carousel');
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+
+    const slideWidth = slides[0].getBoundingClientRect().width + 50; // Adjust for the gap
+
+    // Arrange the slides next to one another
+    const setSlidePosition = (slide, index) => {
+        slide.style.left = slideWidth * index + 'px';
+    };
+    slides.forEach(setSlidePosition);
+
+    let currentIndex = 0;
+
+    const moveToSlide = (track, currentIndex) => {
+        const amountToMove = -slideWidth * currentIndex;
+        track.style.transform = 'translateX(' + amountToMove + 'px)';
+    };
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        moveToSlide(track, currentIndex);
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        moveToSlide(track, currentIndex);
+    });
+
+    // Initial position
+    moveToSlide(track, currentIndex);
+});
+</script>
+
+
 
 <style>
-    /* STYLING */
-h2{
+/* General STYLING */
+h2 {
     color: #262521;
     font-weight: lighter;
 }
 
-h3, p{
+h3, p {
     color: #262521;
     opacity: 70%;
     font-weight: lighter;
 }
 
-.sti p{
+.sti p {
     font-family: Mazius Display;
     opacity: 100%;
     font-size: 18px;
 }
 
-.pris{
-       font-family: Mazius Display;
+.pris {
+    font-family: Mazius Display;
     opacity: 100%;
 }
 
-
-.hjerte{
+.hjerte {
     cursor: pointer;
     border: none;
     border-radius: 5px;
     background-color: #849500;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease;
     width: 50px;
     height: 40px;
     background-image: url('/svg/hjerte1.svg');
@@ -129,74 +187,77 @@ h3, p{
     padding: 5px;
 }
 
-.hjerte:hover{
+.hjerte:hover {
     background-color: #C8D94A;
 }
 
-/* ------------- DESKTOP VIEW ------------ */
+/* Desktop Styles */
 @media screen and (min-width: 768px) {
 
-.sti{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-}
+    .sti {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
 
-h2{
-      display: flex;
-    justify-content: center;
-    font-size: 38px;
-}
+    h2 {
+        display: flex;
+        justify-content: center;
+        font-size: 38px;
+    }
 
-.pris{
-font-size: 30px; 
-margin-top: -250px;
-margin-bottom: 50px;
-}
+    .pris {
+        font-size: 30px;
+        margin-top: -250px;
+        margin-bottom: 50px;
+    }
 
-h3, p{
-    font-size: 24px;
-}
+    h3, p {
+        font-size: 24px;
+    }
 
-.desktop_layout{
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 100px;
-margin-left: -80px;
-}
+    .desktop_layout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 120px;
+        margin-left: -80px;
+    }
 
+    .info {
+        max-width: 380px;
+    }
 
-.img_container {
-    width: 450px;
-    height: 500px; 
-    overflow: hidden; /* Hide any overflow */
-}
+    .img_container {
+        width: 450px;
+        height: 500px;
+        overflow: hidden; /* Hide any overflow */
+    }
 
-.img_container img {
-    width: 100%;  /* Make the image fill the container */
-    height: 100%; /* Make the image fill the container */
-    object-fit: cover; /* Crop the image to fit the container */
-}
+    .img_container img {
+        width: 100%;  /* Make the image fill the container */
+        height: 100%; /* Make the image fill the container */
+        object-fit: cover; /* Crop the image to fit the container */
+    }
 
-.knapper{
-display: flex;
-gap: 30px;
-justify-content: center;
-margin-top: 150px;
-margin-bottom: -200px;
-}
+    .knapper {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 150px;
+        margin-bottom: -200px;
+    }
 
-.produktnavn{
-    display: none;
-}
+    .produktnavn {
+        display: none;
+    }
 
-.produktnavn2{
-margin-bottom: 70px;
-}
+    .produktnavn2, .anbefalet {
+        margin-bottom: 70px;
+    }
 
- .tekst {
+    .tekst {
         display: flex; /* Add display flex */
         flex-direction: column; /* Stack children vertically */
         align-items: center; /* Center content horizontally */
@@ -204,105 +265,220 @@ margin-bottom: 70px;
         margin-left: -75px; /* Adjust as needed */
     }
 
-.line-container {
+    .line-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .line {
+        border-top: 1px solid black;
+        opacity: 30%;
+        width: 92%;
+        margin-top: 170px;
+        margin-bottom: 85px;
+    }
+
+/* CARRUSEL */
+.carousel_outer_container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
+    margin-bottom: 150px;
 }
 
-
-.line {
-    border-top: 1px solid black;
-    opacity: 30%;
-    width: 92%;
-    margin-top: 170px;
-    margin-bottom: 85px;
+/* Wrapper to apply overflow hidden */
+.carousel_wrapper {
+    overflow: hidden;
+    width: 100%;
 }
 
-}
-/* ------------- MOBILE VIEW ------------ */
-@media screen and (max-width: 768px) {
-
-/* styling */
-
-.sti p{
-    font-size: 14px;
-}
-
-h2{
-font-size: 30px;
-}
-
-h3, p{
-font-size: 18px;
-}
-
-.img_container {
-    display: flex; 
-    justify-content: center; /* Horizontal centering */
-    grid-row: 2;
-}
-
-.img_container img {
-width: 350px;
-height: 400px;
-overflow: hidden;
-}
-
-.pris{
-font-size: 20px; 
-}
-
-/* layout */
-.sti{
+/* Carousel container */
+.carousel {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-    grid-row: 1;
+    transition: transform 0.5s ease;
+    gap: 50px;
 }
 
-.produktnavn2{
-    display: none;
+.carousel img {
+    width: 350px;
+    height: 400px; 
+    overflow: hidden;
 }
 
-.container {
-    margin-left: 50px;
-    margin-right: 50px;
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    row-gap: 20px;
+/* Arrows */
+.carousel-button {
+    position: absolute;
+    font-size: 3.5rem; /* Increase the size of the arrows */
+    background-color: transparent;
+    border: none;
+    color: #849500;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1; /* Ensure buttons are above images */
+    transition: color 0.3s ease;
 }
 
- .info {
+.carousel-button:hover {
+    color: #C8D94A;
+}
+
+.prev {
+    left: -60px; /* Move button outside to the left */
+}
+
+.next {
+    right: -60px; /* Move button outside to the right */
+}
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 767px) {
+
+    /* styling */
+    .sti p {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3, p {
+        font-size: 18px;
+    }
+
+    .img_container {
+        display: flex;
+        justify-content: center; /* Horizontal centering */
+        grid-row: 2;
+    }
+
+    .img_container img {
+        width: 350px;
+        height: 400px;
+    }
+
+    .pris {
+        font-size: 20px;
+    }
+
+    /* layout */
+    .sti {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        grid-row: 1;
+    }
+
+    .produktnavn2 {
+        display: none;
+    }
+
+    .container {
+        margin-left: 50px;
+        margin-right: 50px;
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        row-gap: 20px;
+    }
+
+    .info {
         display: flex; /* Add display flex */
         justify-content: center; /* Center children horizontally */
         align-items: center; /* Center children vertically */
         flex-direction: column; /* Stack children vertically */
+        max-width: 400px;
     }
 
-.tekst{
-    justify-content: center;
-    margin-left: -75px;
-}
+    .tekst {
+        justify-content: center;
+    }
 
-.knapper{
-display: flex;
-gap: 30px;
-justify-content: center;
-margin-top: 60px;
-}
+    .knapper {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 60px;
+    }
 
-.line-container {
+    .line-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .line {
+        border-top: 1px solid black;
+        opacity: 30%;
+        width: 90%;
+        margin-top: 100px;
+        margin-bottom: 70px;
+    }
+
+   .anbefalet{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    /* CARRUSEL */
+.carousel_outer_container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
-.line {
-    border-top: 1px solid black;
-    opacity: 30%;
+/* Wrapper to apply overflow hidden */
+.carousel_wrapper {
+    overflow: hidden;
     width: 100%;
-    margin: 100px 0;
 }
 
+/* Carousel container */
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 50px;
 }
+
+.carousel img {
+    width: 350px;
+    height: 400px; 
+    overflow: hidden;
+}
+
+/* Arrows */
+.carousel-button {
+    position: absolute;
+    font-size: 3.5rem; /* Increase the size of the arrows */
+    background-color: transparent;
+    border: none;
+    color: #849500;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1; /* Ensure buttons are above images */
+    transition: color 0.3s ease;
+}
+
+.carousel-button:hover {
+    color: #C8D94A;
+}
+
+.prev {
+    left: -45px; /* Move button outside to the left */
+}
+
+.next {
+    right: -45px; /* Move button outside to the right */
+}
+}
+
 </style>
