@@ -1,6 +1,4 @@
----
-import Garments from "./pages/Garmentscomponent.astro";
----
+
 <html lang="da">
 	<head>
 		<meta charset="utf-8" />
@@ -18,12 +16,12 @@ import Garments from "./pages/Garmentscomponent.astro";
         <div class="mobile-header">
             <div class="burger-icon" >&#9776;</div>
             <a href="/index" class="logo"><img src="/vectors/Logo _mobil.svg" alt=""></a>
-            <div class="image-icon"> <img src="/public/vectors/kurv.svg" alt=""></div>
+            <div class="image-icon"><img src="/public/vectors/kurv.svg" alt=""></div>
         </div>
         <div id="sideNav" class="side-nav">
             <div class="navlogo"> <img src="/vectors/Logo _mobil.svg" alt=""><a href="javascript:void(0)" class="close-btn">&times;</a></div>
             <input type="text" class="search-bar1" placeholder="Søg...">
-            <a class="nava" href="/garment">Tøj</a>
+            <a class="nava" href="#">Tøj</a>
             <a class="nava" href="#">Sko</a>
             <a class="nava" href="#">Tasker</a>
             <a class="nava" href="#">Acc</a>
@@ -57,13 +55,17 @@ import Garments from "./pages/Garmentscomponent.astro";
 </header>
 <script>
    document.addEventListener("DOMContentLoaded", function() {
+     // Hent burgerikonet ved hjælp af klassen "burger-icon"
         const burgerIcon = document.querySelector(".burger-icon");
+         // Hent burgerikonet ved hjælp af klassen "burger-icon"
         const sideNav = document.getElementById("sideNav");
+          // Hent luk-knappen ved hjælp af klassen "close-btn"
         const closeBtn = document.querySelector(".close-btn");
-
+// Tilføj en klik-hændelseslytter til burgerikonet når den klikkes på sætter den sidemenuens bredde til 300px
         burgerIcon.addEventListener("click", function() {
             sideNav.style.width = "300px";
         });
+    // Tilføj en klik-hændelseslytter til luk-knappen går den tilbage til 0.
 
         closeBtn.addEventListener("click", function() {
             sideNav.style.width = "0";
@@ -74,7 +76,6 @@ import Garments from "./pages/Garmentscomponent.astro";
 </body>
 </html>
 <style>
-    /* Common styles */
 .navlogo{
     display: flex;
     justify-content: center;
@@ -85,14 +86,6 @@ import Garments from "./pages/Garmentscomponent.astro";
   background:  #FFFAF5;
   padding-bottom: 20px;
 }
-a {
-    text-decoration: none;
-}
-body {
-    margin: 0;
-    padding: 0;
-}
-
 .logo img{
     justify-content: center;
 align-items: center;

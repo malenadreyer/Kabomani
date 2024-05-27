@@ -1,9 +1,19 @@
 h1,
 h2,
 h3 {
-  font-family: "Mazius display", sans-serif; /* Make sure to enclose font names with spaces in quotes */
+  font-family: "Mazius display", sans-serif;
+  color: black; /* Make sure to enclose font names with spaces in quotes */
 }
 
 body {
   background-color: #fffaf5;
+  margin: 0;
+  padding: 0;
 }
+
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
