@@ -55,13 +55,17 @@
 </header>
 <script>
    document.addEventListener("DOMContentLoaded", function() {
+     // Hent burgerikonet ved hjælp af klassen "burger-icon"
         const burgerIcon = document.querySelector(".burger-icon");
+         // Hent burgerikonet ved hjælp af klassen "burger-icon"
         const sideNav = document.getElementById("sideNav");
+          // Hent luk-knappen ved hjælp af klassen "close-btn"
         const closeBtn = document.querySelector(".close-btn");
-
+// Tilføj en klik-hændelseslytter til burgerikonet når den klikkes på sætter den sidemenuens bredde til 300px
         burgerIcon.addEventListener("click", function() {
             sideNav.style.width = "300px";
         });
+    // Tilføj en klik-hændelseslytter til luk-knappen går den tilbage til 0.
 
         closeBtn.addEventListener("click", function() {
             sideNav.style.width = "0";
@@ -72,7 +76,6 @@
 </body>
 </html>
 <style>
-    /* Common styles */
 .navlogo{
     display: flex;
     justify-content: center;
@@ -83,14 +86,6 @@
   background:  #FFFAF5;
   padding-bottom: 20px;
 }
-a {
-    text-decoration: none;
-}
-body {
-    margin: 0;
-    padding: 0;
-}
-
 .logo img{
     justify-content: center;
 align-items: center;
