@@ -4,7 +4,9 @@ h3 {
   font-family: "Mazius display", sans-serif;
   color: black; /* Make sure to enclose font names with spaces in quotes */
 }
-
+p, h4 {
+  font-family: Mattone;
+}
 body {
   background-color: #fffaf5;
   margin: 0;
