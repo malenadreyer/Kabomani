@@ -1,9 +1,16 @@
 ---
-const tekst1 = Astro.props.tekst1
-const tekst2 = Astro.props.tekst2
+// Henter værdien af tekst1 fra props i Astro-komponenten
+const tekst1 = Astro.props.tekst1;
+
+// Henter værdien af tekst2 fra props i Astro-komponenten
+const tekst2 = Astro.props.tekst2;
 ---
 
-
+<!-- 
+    Dette er en knap med dynamisk tekstindhold.
+    Tekst1 repræsenterer det primære tekstindhold i knappen.
+    Tekst2 repræsenterer et tilføjet tekstindhold, der vises kursivt.
+-->
 <button>{tekst1}<span style="font-style: italic">{tekst2}</span></button>
 
 <style>

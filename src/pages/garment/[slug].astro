@@ -2,25 +2,31 @@
 import Mainlayout from "../../layout/Mainlayout.astro"
 import Button from "../componenter/Button.astro";
 
-export async function getStaticPaths () {
-    const data = await fetch ('https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*', {
-	method: "GET",
-	headers: {
-		apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
-	},
-}).then(response => response.json ());
+//funktion, der henter statiske stier til dynamiske sider
+export async function getStaticPaths() {
+    // Henter data fra et Supabase
+    const data = await fetch('https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*', {
+        method: "GET", // Angiver anmodningsmetoden som GET
+        headers: {
+            // Indsæt API-nøglen til godkendelse med Supabase backend
+            apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
+        },
+    }).then(response => response.json());
 
-    return data.map ((shop)=> {
+    // Mapper data til en liste af stier med tilhørende props
+    return data.map(shop => {
         return {
-            params: { slug: shop.slug},
-            props: {myData:shop},
+            params: { slug: shop.slug }, // Definerer parameteren for stien
+            props: { myData: shop }, // Indstiller egenskaberne for siden
         };
-        
-        });
-    }
-    const {myData} = Astro.props;
-    console.log(myData)
-    
+    });
+}
+
+// Uden for getStaticPaths-funktionen:
+// Henter data fra props i Astro-komponenten og udskriver det til konsollen
+const { myData } = Astro.props;
+console.log(myData);
+   
 ---
 
 <Mainlayout>
@@ -73,18 +79,16 @@ export async function getStaticPaths () {
     <button class="carousel-button prev">❮</button>
     <div class="carousel_wrapper">
         <div class="carousel">
-            <div><img src="https://tapirus.dk/images/thumbs/0760003.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0741004.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0735988.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0745164.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0760352.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0741066.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0759958.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0741015.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0745817.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0741008.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0760003.jpeg" alt=""></div>
-            <div><img src="https://tapirus.dk/images/thumbs/0760003.jpeg" alt=""></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0760003.jpeg" alt="divisonhat"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741004.jpeg" alt="jakke"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0735988.jpeg" alt="langærmet"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0745164.jpeg" alt="sko"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0760352.jpeg" alt="hat"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741066.jpeg" alt="shorts"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0759958.jpeg" alt="solbriller"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741015.jpeg" alt="divisionjakke"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0745817.jpeg" alt="sko"></div>
+            <div><img src="https://tapirus.dk/images/thumbs/0741008.jpeg" alt="shorts"></div>
         </div>
     </div>
     <button class="carousel-button next">❯</button>
@@ -100,9 +104,9 @@ export async function getStaticPaths () {
     heartButton.addEventListener('click', () => {
         console.log("tihi")
       if (heartButton.style.backgroundImage.includes('hjerte1.svg')) {
-        heartButton.style.backgroundImage = "url('/svg/hjerte2.svg')";
+        heartButton.style.backgroundImage = "url('/public/vectors/hjerte2.svg')";
       } else {
-        heartButton.style.backgroundImage = "url('/svg/hjerte1.svg')";
+        heartButton.style.backgroundImage = "url('/public/vectors/hjerte1.svg')";
       }
     });
   });
@@ -166,7 +170,7 @@ h5, h3, p {
     transition: background-color 0.3s ease;
     width: 50px;
     height: 40px;
-    background-image: url('/svg/hjerte1.svg');
+    background-image: url('/public/vectors/hjerte1.svg');
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
@@ -174,7 +178,9 @@ h5, h3, p {
 }
 
 #hjerteButton:hover {
-    background-color: #C8D94A;
+    background-image: url('/public/vectors/hjerte2.svg');
+    background-size: 60%;
+    background-position: center;
 }
 
 /* Desktop Styles */

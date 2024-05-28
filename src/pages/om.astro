@@ -12,7 +12,7 @@ import Mainlayout from "../layout/Mainlayout.astro";
             Kabomani’s cirkulære koncept gør det muligt at shoppe bæredygtigt og  økonomisk, samtidig med at vi styrker fællesskabet omkring genbrug og  mode. Forny din garderobe, spar penge, og vær en del af en grønnere  fremtid hos Kabomani!</p></div>     
     </div>
     <div class="billede1">
-        <img src="imgs/animation_dummy.png" alt="forside">
+        <img src="/public/vectors/ombillede.svg" alt="forside">
     </div>
 </div>
 
@@ -29,7 +29,7 @@ import Mainlayout from "../layout/Mainlayout.astro";
 <div class="container_2">
     <div class="animation">
         <script class="animation" src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-<dotlottie-player class="animation" src="https://lottie.host/4aaf537e-1f74-4c77-9ea6-d0db611956c6/UDteRJjwaA.json" background="transparent" speed="1" loop autoplay></dotlottie-player></div>
+<dotlottie-player class="animation-player" src="https://lottie.host/4aaf537e-1f74-4c77-9ea6-d0db611956c6/UDteRJjwaA.json" background="transparent" speed="1" autoplay></dotlottie-player></div>
     <div class="tekst_container_2">
     <div class="container_2_2">
         <div>
@@ -53,13 +53,13 @@ import Mainlayout from "../layout/Mainlayout.astro";
             <h1>Step 2</h1>
         </div>
         <div>
-            <p>Kom ned i en af vores butikker og hæng det pp med et prismærke g vi sætter det på display for dig vores <br> <br>Hver gang du sælger et stykke tøj, bliver du betalt i vores app.  Dem kan du f udbetalt eller bruge dem til at shoppe for i vores butikker eller online shop.</p>
+            <p>Kom ned i en af vores butikker og hæng det op med et prismærke. Vi sætter det på display for dig vores butik. <br> <br>Hver gang du sælger et stykke tøj, bliver pengene overført til din saldo i vores app. Du kan vælge at få dem udbetalt, eller bruge dem på nyt tøj hos Kabomani. </p>
         </div>
     </div>
-         <div>
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+         <div class="animation">
+        <script class="animation" src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-        <dotlottie-player src="https://lottie.host/6a33073d-a33d-48b9-9e18-881ddedbc25e/p5sk7HsxjE.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        <dotlottie-player class="animation-player1" src="https://lottie.host/6a33073d-a33d-48b9-9e18-881ddedbc25e/p5sk7HsxjE.json" background="transparent" speed="1" autoplay></dotlottie-player>
         </div>
 </div>
 
@@ -142,10 +142,50 @@ import Mainlayout from "../layout/Mainlayout.astro";
 
 
 </Mainlayout>
+<script>
+// 'DOMContentLoaded' udløses, hvilket indikerer, at HTML-dokumentet er blevet fuldt indlæst og analyseret
+document.addEventListener('DOMContentLoaded', function() {
+    // Hent animationselementet ved hjælp af dets klasse
+    const animation = document.querySelector('.animation-player');
+
+    // Opret en observer, som vil overvåge, når animationselementet kommer ind i visningen
+    const observer = new IntersectionObserver((entries) => {
+        // For hver indgang i observeringens resultater
+        entries.forEach(entry => {
+            // Hvis elementet er inden for visningen
+            if (entry.isIntersecting) {
+                // Nulstil afspilningshovedet til starten af ​​animationen
+                animation.seek(0);
+                // Afspil animationen
+                animation.play();
+            }
+        });
+    });
+
+    // Start observeren og begynd at observere animationselementet
+    observer.observe(animation);
+});
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const animation = document.querySelector('.animation-player1');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    console.log ("hehe")
+                    if (entry.isIntersecting) {
+                        animation.seek(0);
+                        animation.play();
+                    }
+                });
+            });
+
+            observer.observe(animation);
+        });
+</script>
 
 <style>
  @media (min-width: 790px) {
-        .over {
+.over {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left:50px;
@@ -208,6 +248,9 @@ color:rgba(132, 149, 0, 1) ;
         margin-top: 50px;
         justify-items: center;
         align-self: center;
+    }
+    .billede1 img {
+        width:50%;
     }
     .container_3 {
         display: grid;
@@ -278,7 +321,9 @@ color:rgba(132, 149, 0, 1);
     display: grid;
     justify-items: center;
 }
-
+.billede1 img {
+    width: 50%;
+}
 .tekst_container_1 p {
         font-family: "Mazius Display";
         line-height: 50px;
@@ -326,6 +371,7 @@ color:rgba(132, 149, 0, 1) ;
         margin-top: 50px;
         justify-items: center;
         align-self: center;
+        padding-bottom: 50px;
     }
     .overskrift h1{
         color:rgba(132, 149, 0, 1);

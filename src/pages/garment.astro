@@ -3,15 +3,26 @@ import Filtering from "./componenter/Filtering.astro";
 import Garmentscomponent from "./Garmentscomponent.astro";
 import FilteringWeb from "./componenter/FilteringWeb.astro"
 import Mainlayout from "../layout/Mainlayout.astro";
-const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*", {
-	method: "GET",
-	headers: {
-		apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
-	},
-}
-).then (res=>res.json())
+// funktion til at hente data fra en Supabase
+const data = await fetch("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*", {
+    method: "GET", // Angiver anmodningsmetoden som GET
+    headers: {
+        // Indsætter API-nøglen til godkendelse med Supabase
+        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZnh5dnlycWthZmR1YXFmd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MjkzNTksImV4cCI6MjAzMTEwNTM1OX0.IqWoAtIBkjXXKbFnJ9BDvFcyIpgl8_3ZWTFgC0wfLlo"
+    },
+})
+// Når svaret modtages, konverter det til JSON-format
+.then(res => res.json());
+
+// Nu indeholder 'data' JSON-svaret fra API-opkaldet
+console.log(data); // Udskriv data til konsollen til fejlfinding eller yderligere behandling
 
 ---
+<!-- 
+    Dette er en indlejring af en hovedlayout-komponent.
+    Hovedlayoutet indeholder typisk strukturelle elementer, såsom header, footer og navigationsmenuer,
+    som anvendes på tværs af flere sider i webapplikationen.
+-->
 
 <Mainlayout>
 <div class="container">
@@ -58,16 +69,25 @@ const data = await fetch ("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabo
 </div>
 
 <script>
-	document.addEventListener("DOMContentLoaded", function() {
+
+// 'DOMContentLoaded', som udløses, når HTML-dokumentet er blevet fuldt indlæst og analyseret
+document.addEventListener("DOMContentLoaded", function() {
+    // Hent knappen for dropdown-menuen ved hjælp af dens klasse
     const dropdownButton = document.querySelector(".dropdown-button");
+    // Hent indholdet af dropdown-menuen ved hjælp af dens klasse
     const dropdownContent = document.querySelector(".dropdown-content");
 
+    // Tilføj en klik-hændelseslytter til dropdown-knappen
     dropdownButton.addEventListener("click", function() {
+        // Skift tilstanden 'show' for dropdown-indholdet, så det enten vises eller skjules
         dropdownContent.classList.toggle("show");
     });
 
+    // Lyt efter klikbegivenheder på hele vinduet
     window.addEventListener("click", function(e) {
+        // Kontrollér om klikket ikke fandt sted inden i dropdown-knappen
         if (!dropdownButton.contains(e.target)) {
+            // Hvis klikket ikke var inden i dropdown-knappen, fjern da 'show'-klassen fra dropdown-indholdet for at skjule det
             dropdownContent.classList.remove("show");
         }
     });
@@ -81,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Close the dropdown menu if the user clicks outside of it
+    // Lukker drop down menuen når man trykker på den
     window.addEventListener('click', function(event) {
         if (!event.target.matches('.dropdown-button')) {
             if (dropdownContent.style.display === 'block') {
