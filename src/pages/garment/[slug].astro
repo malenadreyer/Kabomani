@@ -104,9 +104,9 @@ console.log(myData);
     heartButton.addEventListener('click', () => {
         console.log("tihi")
       if (heartButton.style.backgroundImage.includes('hjerte1.svg')) {
-        heartButton.style.backgroundImage = "url('/public/vectors/hjerte2.svg')";
+        heartButton.style.backgroundImage = "url('/vectors/hjerte2.svg')";
       } else {
-        heartButton.style.backgroundImage = "url('/public/vectors/hjerte1.svg')";
+        heartButton.style.backgroundImage = "url('/vectors/hjerte1.svg')";
       }
     });
   });
@@ -118,10 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.querySelector('.next');
     const prevButton = document.querySelector('.prev');
 
-    const slideWidth = slides[0].getBoundingClientRect().width + 50; // Adjust for the gap
+    const slideWidth = slides[0].getBoundingClientRect().width + 50;
 
 
-    // Arrange the slides next to one another
     const setSlidePosition = (slide, index) => {
         slide.style.left = slideWidth * index + 'px';
     };
@@ -143,8 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         moveToSlide(track, currentIndex);
     });
-
-    // Initial position
     moveToSlide(track, currentIndex);
 });
 </script>
@@ -170,7 +167,7 @@ h5, h3, p {
     transition: background-color 0.3s ease;
     width: 50px;
     height: 40px;
-    background-image: url('/public/vectors/hjerte1.svg');
+    background-image: url('/vectors/hjerte1.svg');
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
@@ -178,7 +175,7 @@ h5, h3, p {
 }
 
 #hjerteButton:hover {
-    background-image: url('/public/vectors/hjerte2.svg');
+    background-image: url('/vectors/hjerte2.svg');
     background-size: 60%;
     background-position: center;
 }
