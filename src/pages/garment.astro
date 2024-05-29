@@ -1,8 +1,8 @@
 ---
-import Filtering from "./componenter/Filtering.astro";
-import Garmentscomponent from "./Garmentscomponent.astro";
-import FilteringWeb from "./componenter/FilteringWeb.astro"
+import Garmentscomponent from "../componenter/Garmentscomponent.astro";
+import FilteringWeb from "../componenter/FilteringWeb.astro"
 import Mainlayout from "../layout/Mainlayout.astro";
+import Filtering from "../componenter/Filtering.astro";
 // funktion til at hente data fra en Supabase
 const data = await fetch("https://bifxyvyrqkafduaqfwhe.supabase.co/rest/v1/kabomani?select=*", {
     method: "GET", // Angiver anmodningsmetoden som GET
